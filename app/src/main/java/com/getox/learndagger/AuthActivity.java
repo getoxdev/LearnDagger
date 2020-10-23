@@ -2,9 +2,13 @@ package com.getox.learndagger;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.graphics.drawable.Drawable;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ImageView;
+
+import com.bumptech.glide.RequestManager;
 
 import javax.inject.Inject;
 
@@ -13,17 +17,21 @@ import dagger.android.support.DaggerAppCompatActivity;
 public class AuthActivity extends DaggerAppCompatActivity {
 
     @Inject
-    String testString;
+    Drawable logo;
 
     @Inject
-    Boolean isAppNull;
+    RequestManager requestManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_auth);
 
-        Log.e("TAG", testString);
-        Log.e("TAG", String.valueOf(isAppNull));
+        setLogo();
+    }
+
+    private void setLogo()
+    {
+        requestManager.load(logo).into((ImageView)findViewById(R.id.iv_auth));
     }
 }

@@ -1,5 +1,6 @@
 package com.getox.learndagger.di;
 
+import com.getox.learndagger.di.auth.AuthModule;
 import com.getox.learndagger.di.auth.AuthViewModelModule;
 import com.getox.learndagger.ui.auth.AuthActivity;
 
@@ -11,7 +12,8 @@ public abstract class ActivityBuilderModule
 {
     @ContributesAndroidInjector(
             modules = {
-                    AuthViewModelModule.class
+                    AuthViewModelModule.class,
+                    AuthModule.class
             }
     )
     abstract AuthActivity contributeAuthActivity();
